@@ -1,17 +1,5 @@
-
---@block
-SHOW databases;
-
---@block
-USE customer;
-
---@block
-USE customer_order;
-
---@block
-SHOW tables;
-
---@block
+use customer;
+show tables;
 CREATE TABLE IF NOT EXISTS customer_info (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
@@ -22,19 +10,6 @@ CREATE TABLE IF NOT EXISTS customer_info (
     PRIMARY KEY (id)
 );
 
--- Add a new Table to the database
-
---@block
-CREATE TABLE IF NOT EXISTS customer_order (
-    id INT NOT NULL AUTO_INCREMENT,
-    customer_id INT NOT NULL,
-    order_date DATE NOT NULL,
-    order_amount DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (customer_id) REFERENCES customer_info(id)
-);
-
---@block
 INSERT INTO customer_info (username, email, phone, date_of_birth, address) VALUES
 ('John Doe', 'john@gamil.com', '123456789', '1990-10-01', '123 Street'),
 ('Jane Doe', 'jane@gmail.com', '987654361', '1991-11-02', '333 Street'),
@@ -42,15 +17,7 @@ INSERT INTO customer_info (username, email, phone, date_of_birth, address) VALUE
 ('jack black', 'jack@gmail.com', '987654331', '1993-01-10', '483 Street'),
 ('jane black', 'jane@gmail.com', '987654341', '1994-02-13', '493 Street');
 
---@block
 -- if any error facing just truncate this table data
-TRUNCATE TABLE customer_info;
+-- TRUNCATE TABLE customer_info;
 
---@block
-SELECT * FROM customer_info;
-
---@block
-SELECT * FROM customer_info WHERE id = 1;
-
---@block
-SELECT * FROM customer_info WHERE date_of_birth < 1990-10-01;
+select * from customer_info;
